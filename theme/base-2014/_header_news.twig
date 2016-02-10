@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html class="no-js" lang="{{ htmllang() }}">
+<head>
+    <meta charset="utf-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {# make sure we always display a proper title: The record's title if there is one, appended with the
+       sitename. If there is no title, we append the sitename with the payoff, if there is one. #}
+    <title>
+        {% if record.title is defined %}{{ record.title|striptags }} | {% endif %}
+            {{ app.config.get('general/sitename') }}
+        {% if record.title is not defined and app.config.get('general/payoff') %} | {{ app.config.get('general/payoff') }}{% endif %}
+    </title>
+
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:400,600' rel='stylesheet' type='text/css'>
+
+    {# paths.theme is always a correct path to the current theme. Even if you rename the theme-folder,
+       this will keep working. See the documentation on paths: http://docs.bolt.cm/internals#paths #}
+    <link rel="stylesheet" href="{{ paths.theme }}css/boot.css">
+    <link rel="stylesheet" href="{{ paths.theme }}css/landio.css">
+    <link rel="stylesheet" href="{{ paths.theme }}css/components.min.css">
+    <link rel="stylesheet" href="{{ paths.theme }}css/master.min.css">
+    {# <link rel="stylesheet" href="{{ paths.theme }}css/app.css"> #}
+    {# Bolt comes with Magnific Popup, as it's used in the backend. We can use it here, or you can
+      just swap it out for the image-viewing script of your choice. Or delete it altogether. #}
+    {# <link rel="stylesheet" href="{{ paths.theme }}css/magnific-popup.css"> #}
+    <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'>
+
+
+    {#<!-- A variable from the theme's config: {{ theme.foo }} -->#}
+
+</head>
+<body>
+
+<!-- header nav -->
+<nav class="navbar navbar-dark bg-inverse bg-inverse-custom navbar-fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+         <span class="logo-icon"></span>
+          <span class="sr-only">Land.io</span>
+        </a>
+        <a class="navbar-toggler hidden-md-up pull-xs-right" data-toggle="collapse" href="#collapsingNavbar" aria-expanded="false" aria-controls="collapsingNavbar">
+        &#9776;
+      </a>
+        <div id="collapsingNavbar" class="collapse navbar-toggleable-custom" role="tabpanel" aria-labelledby="collapsingNavbar">
+          <ul class="nav navbar-nav pull-xs-right">
+            {{ menu('news', '_sub_menu.twig') }}
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+
+    {# the home page carousel #}
+   <header id="landioCarousel" class="carousel carousel-header slide bg-inverse" data-ride="carousel" data-interval="0" role="banner">
+        <div id="home"></div>
+      <ol class="carousel-indicators">
+        <li data-target="#landioCarousel" data-slide-to="0" class="active"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+
+        <div class="carousel-item active" style="/*background-image: url(img/DSC_0285.jpg);*/">
+          <div class="carousel-caption">
+            <h1 class="display-3">Stay up to date with Utopia News.</h1>
+            <h2 class="m-b-3 hidden-sm-down">See news below.</h2>
+            <a class="btn btn-secondary-outline m-b-2" href="#news_items" role="button">View more</a>
+          </div>
+          <div class="background-vignette"></div>
+        </div>
+        <ul class="nav nav-inline social-share">
+          <li class="nav-item"><a class="nav-link" href="#"><span class="icon-twitter"></span> 1024</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><span class="icon-facebook"></span> 562</a></li>
+        </ul>
+      </div>
+    </header>
+
+
+

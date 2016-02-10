@@ -1,0 +1,66 @@
+{% include '_header_news.twig' %}
+
+{#
+	list all news items on this page
+#}
+<div class="container content">
+	<div class="row" id="news_items">
+{% setcontent records = "entries" allowpaging %}
+{% for record in records %}
+		<div class="col-md-4">
+			<div class="row" style="height: 65px">
+				<div class="col-md-12">
+					<h5 class="subh">{{record.title}}</h5>
+				</div>
+			</div>
+			<div class="row tag_holder">
+				<div class="col-md-12">
+				{% for tname in record.taxonomy.tags %}
+					<span class="tag">{{ tname }}</span>
+                {% endfor %}
+            	</div>
+			</div>
+        	<div class="row" style="height: 160px; ">
+        		<div class="col-md-12">
+        			{% if record.image!="" %}
+        			{% endif %}
+        			{{ record.excerpt(200) }}
+        			<div class="clear"></div>
+        			<br>
+        			<div class="row">
+        				<div class="col-md-12">
+        					<p>Published: {{ record.values.datepublish }}</p>
+        				</div>
+        			</div>
+        			{# {{dump(record)}} #}
+        			{# values.datepublish #}
+        			{# user.username #}
+
+        		</div>
+        	</div>
+        	<div class="row">
+                <div class="col-md-12">
+                	<br />
+                    <a class="btn btn-secondary-outline m-b-2" href="{{ record.link }}" role="button">Read</a>
+                </div>
+            </div>
+        	{# <p class="read_more">read more</p> #}
+        	<div class="item_hidden" data-title="" data-images="" data-image="" data-teaser="" data-body=""></div>
+    	</div>
+{% endfor %}
+	</div>
+</div>
+
+
+<script>
+	window.onload = function() {
+		// news items on click event
+		$('#news_items .read_more').on('click', function(e) {
+			e.preventDefault();
+			alert();
+		})
+	}
+</script>
+
+
+{% include '_footer.twig' %}

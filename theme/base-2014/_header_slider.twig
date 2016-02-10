@@ -1,0 +1,41 @@
+   <header id="landioCarousel" class="carousel carousel-header slide bg-inverse" data-ride="carousel" data-interval="0" role="banner">
+        <div id="home"></div>
+      <ol class="carousel-indicators">
+        <li data-target="#landioCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#landioCarousel" data-slide-to="1"></li>
+        <li data-target="#landioCarousel" data-slide-to="2"></li>
+      </ol>
+      <div class="carousel-inner" role="listbox">
+          <!--
+            carousel items will be pulled from database:
+            limit of 5, latest and randomized
+            -->
+        <div class="carousel-item active" style="background-image: url(img/DSC_0285.jpg);">
+          <div class="carousel-caption">
+            <h1 class="display-3">Slide 1</h1>
+            <h2 class="m-b-3 hidden-sm-down">slide 1 caption.</h2>
+            <a class="btn btn-secondary-outline m-b-2" href="#" role="button">View more</a>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url(img/DSC_0285.jpg);">
+          <div class="carousel-caption">
+            <h1 class="display-3">Slide 2</h1>
+            <h2 class="m-b-3 hidden-sm-down">slide <strong>2</strong> caption.</h2>
+            <a class="btn btn-secondary-outline m-b-2" href="#" role="button">View more</a>
+          </div>
+        </div>
+        <div class="carousel-item" style="background-image: url(img/DSC_0285.jpg);">
+          <div class="carousel-caption">
+            <h1 class="display-3">Slide 3</h1>
+            <h2 class="m-b-3 hidden-sm-down">slide 3 caption.</h2>
+            <a class="btn btn-secondary-outline m-b-2" href="#" role="button">View more</a>
+          </div>
+        </div>
+          <!-- we will tap into social apis and get the counts for followers or posts and load here-->
+        <ul class="nav nav-inline social-share">
+          <li class="nav-item"><a class="nav-link" href="#"><span class="icon-twitter"></span> 1024</a></li>
+          <li class="nav-item"><a class="nav-link" href="#"><span class="icon-facebook"></span> 562</a></li>
+<!--          <li class="nav-item"><a class="nav-link" href="#"><span class="icon-linkedin"></span> 356</a></li>-->
+        </ul>
+      </div>
+    </header>

@@ -1,0 +1,200 @@
+{% include '_header.twig' %}
+
+<!-- Main Page Content and Sidebar -->
+
+    <!-- Main Blog Content -->
+    {# <div class="row"> #}
+    {# main page teasers #}
+        {% setcontent records = "pages" allowpaging %}
+        {% for record in records %}
+            {# <div class="row"> #}
+
+                {% if record.image!="" %}
+                    {# <div class="large-4 imageholder">
+                        <a href="{{ image(record.image) }}">
+                            <img src="{{ thumbnail(record.image, 400, 260) }}">
+                        </a>
+                    </div> #}
+                {% endif %}
+
+                {# <h3><a href="{{ record.link }}">{{ record.title }}</a></h3> #}
+
+                {# <p> #}
+                    {# {{ record.excerpt(220) }} #}
+                {# </p> #}
+                {{ record.teaser }}
+                {# {% if record.link %}
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <br><br>
+                        <a class="btn btn-secondary-outline m-b-2" href="#" role="button">{{record.link}}</a>
+                    </div>
+                </div>
+                {% endif %} #}
+
+            {# <hr> #}
+
+        {% endfor %}
+
+    {# </div> #}
+    {# end of main page teasers #}
+
+           {# <article> #}
+            {# {% if record is defined %} #}
+
+                {# make the 'home' variable refer to the current record, which is set by the
+                   user in config.yml #}
+                {# {% set home = record %} #}
+                {# {% if home.title is defined and home.title is not empty %} #}
+                    {# <h1>the title: {{ home.title }}</h1> #}
+                {# {% endif %} #}
+
+                {# {% if home.image is defined and home.image is not empty %} #}
+                    {# <div class="large-5 columns imageholder"> #}
+                        {# <a href="{{ image(home.image) }}"> #}
+                            {# blah #}
+                            {# <img src="{{ thumbnail(home.image, 696, 400) }}"> #}
+                        {# </a> #}
+                    {# </div> #}
+                {# {% endif %} #}
+
+                {# display something introduction-like.. #}
+               {#  {% if home.introduction is defined and home.introduction is not empty %}
+                    {{ home.introduction }}
+                {% elseif home.teaser is defined and home.teaser is not empty %}
+                    {{ home.teaser }}
+                {% elseif home is not empty %}
+                    <p> blah again {{ home.excerpt(500) }}</p>
+                {% endif %}
+
+                {% if home.link is defined and home.link is not empty %}
+                    <a href="{{ home.link }}">Read more!!! &raquo;</a>
+                {% endif %} #}
+
+                {# Tip: If you're curious what all of the available fields of this
+                   record contain, just use {{ print(home) }}, to print it all. #}
+
+            {# {% else %} #}
+               {#  <p>
+                    {{ __('Content for home not found!') }}
+                    {{ __("You should set 'homepage:' in your 'app/config/config.yml' to an existing record. Make sure that the content is published, otherwise it will not be shown.") }}
+                </p> #}
+            {# {% endif %} #}
+        {# </article> #}
+
+        {# <hr> #}
+
+        {# <h4>{{ __('Latest entries') }}</h4> #}
+
+        {# Here we use 'setcontent' to set the variable 'records' to "entries/latest/6",
+           which is shorthand for "the 6 latest records in Entries. Note that we are
+           requesting multiple entries, so 'records' will be an array containing each
+           of the entries. That's why we use the 'for' loop to iterate over them all. #}
+        {# {% setcontent records = "entries/latest/6" allowpaging %} #}
+       {#  {% for record in records %}
+            <article>
+
+                {% if record.image!="" %}
+                    <div class="large-4 imageholder">
+                        <a href="{{ image(record.image) }}">
+                            <img src="{{ thumbnail(record.image, 400, 260) }}">
+                        </a>
+                    </div>
+                {% endif %}
+
+                <h3><a href="{{ record.link }}">{{ record.title }}</a></h3>
+
+                <p>{{ record.excerpt(220) }}</p>
+
+            </article>
+
+            <hr>
+
+        {% endfor %} #}
+
+        {# {{ pager() }} #}
+
+        {# <div class="" id="whyus"> #}
+            {# <p>the why us div</p> #}
+        {# </div> #}
+
+
+
+
+    <!-- End Main Content -->
+    {# include the sidebar. The include tag can be used to break up your templates in logical parts,
+       and re-use them across different templates/pages. #}
+    {# {% include '_aside.twig' %} #}
+
+<!-- End Main Content and Sidebar -->
+    {# news block#}
+    {# for the news block we need to build the html content into the page then randomly select items to be inserted into the page #}
+    {# {% setcontent news = '/showcase/news' %} #}
+    {# {{ news.html }} #}
+
+
+    <!-- News
+    ================================================== -->
+    <section class="section-news section-text text-xs-center" id="news">
+        <h3 class="wp wp-1">News</h3>
+        <div class="container">
+            <div class="bg-inverse">
+                <div class="row">
+                    {% setcontent nw1 = 'entry/1' %}
+                    <div class="col-md-6 p-r-0">
+                        <figure class="has-light-mask m-b-0 image-effect"><img alt="Article thumbnail" class="img-fluid" src="files/{{nw1.values.image.file}}" /></figure>
+                    </div>
+                    <div class="col-md-6 p-l-0">
+                        <article class="center-block"><span class="label label-info">Featured article</span>
+                            <h5><a href="{{nw1.link}}">{{nw1.title}} <span class="icon-arrow-right"></span></a></h5>
+                            <p class="m-b-0">
+                                {% for tname in nw1.taxonomy.tags %}
+                                <a href="#"><span class="label label-default text-uppercase">{{tname}}</span></a>
+                                {% endfor %}
+                                {# <a href="#"><span class="label label-default text-uppercase">Design Studio</span></a> #}
+                                {# <a href="#"><span class="label label-default text-uppercase">Image: {{nw1.values.image.file}}</span></a> #}
+                                <a href="#"><span class="label label-default text-uppercase"> 1 Hour Ago</span></a>
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="row">
+                    {% setcontent nw2 = 'entry/2' %}
+                    {# {{dump(nw2)}} #}
+                    <div class="col-md-6 col-md-push-6 p-l-0">
+                        <figure class="has-light-mask m-b-0 image-effect"><img alt="Article thumbnail" class="img-fluid" src="files/{{nw2.values.image.file}}" /></figure>
+                    </div>
+                    <div class="col-md-6 col-md-pull-6 p-r-0">
+                        <article class="center-block"><span class="label label-info">Featured article</span>
+                            <h5><a href="{{nw2.link}}">{{nw2.title}} <span class="icon-arrow-right"></span></a></h5>
+                            <p class="m-b-0">
+                                {# {% for record in records %} #}
+                                {% for tname in nw2.taxonomy.tags %}
+                                <a href="#"><span class="label label-default text-uppercase">{{tname}}</span></a>
+                                {% endfor %}
+                                <a href="#"><span class="label label-default text-uppercase"> {{nw2.values.image.file}}</span></a></p>
+                        </article>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12"><br /><br /><br />
+                    <a class="btn btn-secondary-outline m-b-2" href="showcase/news" role="button">More news</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    {# end of news block#}
+
+    {# news contact#}
+    {% setcontent contact = '/showcase/contact-us' %}
+    {{ contact.html }}
+    {# end of news contact#}
+
+
+
+
+{% include '_footer.twig' %}
